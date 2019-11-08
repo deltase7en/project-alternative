@@ -2,7 +2,6 @@ import React from 'react'
 import { Platform, Dimensions } from 'react-native'
 import { createAppContainer } from 'react-navigation'
 import { createDrawerNavigator } from 'react-navigation-drawer'
-
 import HomeScreen from '../screens/HomeScreen'
 import MenuDrawer from '../components/MenuDrawer'
 import MapLocation from '../screens/Map'

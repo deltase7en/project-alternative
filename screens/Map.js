@@ -1,57 +1,96 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { MapView, Permissions, Location } from 'expo'
-import MenuButton from '../components/MenuButton'
+import MapView, { Marker, PROVIDER_GOOGLE, AnimatedRegion } from 'react-native-maps'
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
-export default class MapLocation extends React.Component{
+const LATITUDE_DELTA = 0.009;
+const LONGITUDE_DELTA = 0.009;
+const LATITUDE = 0;
+const LONGITUDE = 0;
+class MapLocation extends Component{
+
     constructor(props){
         super(props)
-        this.state = {
-            region: null,
-        }
-        this._getLocationAsync();
-    }
 
-    _getLocationAsync = async () => {
-        let { status } = await Permissions.askAsync(Permissions.LOCATION)
-        if(status !== 'granted')
-            console.log('Permission to access location was denied.')
-        
-        let location = await Location.getCurrentPositionAsync({enabledHighAccuracy: true})
-        let region = {
-            latitude: location.coords.latitude,
-            longitude: location.coords.longitude,
-            latitudeDelta: 0.045,
-            longitudeDelta: 0.045
-        }
-        this.setState({region: region})
+        this.state = {
+            latitude: LATITUDE,
+            longitude: LONGITUDE,
+
+            coordinate: new AnimatedRegion({
+                latitude:LATITUDE,
+                longitude:LONGITUDE,
+                latitudeDelta:0,
+                longitudeDelta:0
+            })
+        };
     }
-    render()
-    {
-        return (
-        <View style={styles.container}>
-            <MenuButton/>
-            <Text style={styles.text}>Map</Text>
-            <MapView
-                initialRegion={this.state.region}
-                showsUserLocation={true}
-                showsCompass={true}
-                rotateEnabled={false}
-                style={{flex: 1}}
-            />
-        </View>
-        );
+    componentDidMount() {
+        navigator.geolocation.getCurrentPosition(
+            position => {
+                console.log(position);
+                this.setState({
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+
+                    error:null
+                })
+            },
+
+            error => this.setState({ error: error.message}),
+            { enabledHighAccuracy: true, timeout: 200000}
+        )
+        const { coordinate } = this.state
+        this.watchID = navigator.geolocation.watchPosition(
+            position => {
+                const { latitude, longitude } = position.coords
+                this.setState({latitude, longitude
+                })
+            },
+
+            error => console.log(error),
+            { enabledHighAccuracy:true, timeout: 20000, distanceFilter: 10}
+        )
+    }
+    
+    getMapRegion = () => ({
+        latitude: this.state.latitude,
+        longitude: this.state.longitude,
+        latitudeDelta: LATITUDE_DELTA,
+        longitudeDelta: LONGITUDE_DELTA
+      });
+    render(){
+        return(
+            <View style={styles.container}>
+                <MapView style={styles.map}
+                    provider={PROVIDER_GOOGLE}
+                    showUserLocation
+                    followUserLocation
+                    initialRegion={this.getMapRegion()}
+                />
+                <Marker.Animated coordinate={this.getMapRegion()}>
+                    
+                </Marker.Animated>
+            </View>
+        )
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
+    container:{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        justifyContent: 'flex-end',
         alignItems: 'center',
-        justifyContent: 'center',
-  },
-    text: {
-        fontSize: 30,
-  }
-});
+    },
+    map: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+    }
+})
+
+export default MapLocation;
