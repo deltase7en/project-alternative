@@ -1,13 +1,13 @@
 import MapView, { Marker, PROVIDER_GOOGLE, AnimatedRegion } from 'react-native-maps'
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import MenuButton from '../components/MenuButton'
 
 const LATITUDE_DELTA = 0.009;
 const LONGITUDE_DELTA = 0.009;
-const LATITUDE = 0;
-const LONGITUDE = 0;
+const LATITUDE = -22.9355145;
+const LONGITUDE = -43.184392599999995;
 class MapLocation extends Component{
-
     constructor(props){
         super(props)
 
@@ -25,7 +25,7 @@ class MapLocation extends Component{
     }
     componentDidMount() {
         navigator.geolocation.getCurrentPosition(
-            position => {
+            (position) => {
                 console.log(position);
                 this.setState({
                     latitude: position.coords.latitude,
@@ -42,8 +42,7 @@ class MapLocation extends Component{
         this.watchID = navigator.geolocation.watchPosition(
             position => {
                 const { latitude, longitude } = position.coords
-                this.setState({latitude, longitude
-                })
+                this.setState({latitude, longitude})
             },
 
             error => console.log(error),
@@ -60,16 +59,17 @@ class MapLocation extends Component{
     render(){
         return(
             <View style={styles.container}>
-                <MapView style={styles.map}
-                    provider={PROVIDER_GOOGLE}
-                    showUserLocation
-                    followUserLocation
-                    initialRegion={this.getMapRegion()}
-                />
-                <Marker.Animated coordinate={this.getMapRegion()}>
-                    
-                </Marker.Animated>
-            </View>
+                <MenuButton navigation={this.props.navigation}/>
+                    <MapView style={styles.map}
+                        provider={PROVIDER_GOOGLE}
+                        showUserLocation={true}
+                        followUserLocation={true}
+                        initialRegion={this.getMapRegion()}
+                        showMyLocationButton={true}
+                    >
+                    <Marker coordinate={this.getMapRegion()}/>
+                    </MapView>
+                </View>
         )
     }
 }
