@@ -8,7 +8,6 @@ export default class HomeScreen extends React.Component {
   {
     return (
       <View style={styles.container}>
-        <MenuButton navigation={this.props.navigation}/>
         <Explore/>
       </View>
     );
@@ -18,7 +17,7 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f5f5f5',
+        backgroundColor: '#461C5D',
         alignItems: 'center',
         justifyContent: 'center',
   },

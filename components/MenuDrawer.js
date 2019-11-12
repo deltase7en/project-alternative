@@ -9,6 +9,7 @@ import {
 	StyleSheet,
 	TouchableOpacity,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 const WIDTH = Dimensions.get('window').width 
 const HEIGHT = Dimensions.get('window').height 
@@ -17,7 +18,7 @@ export default class MenuDrawer extends React.Component {
 	navLink(nav, text) {
 		return(
 			<TouchableOpacity style={{height: 50}} onPress={() => this.props.navigation.navigate(nav)}>
-				<Text style={styles.link}>{text}</Text>
+					<Text style={styles.link}>{text}</Text>
 			</TouchableOpacity>
 		)
 	}
@@ -29,7 +30,7 @@ export default class MenuDrawer extends React.Component {
 					<View style={styles.topLinks}>
 						<View style={styles.profile}>
 							<View style={styles.imgView}>
-								<Image style={styles.img} source={require('../assets/MUVLUV-Icon.png')} />
+								<Image style={styles.img} source={require('../assets/Profile.png')} />
 							</View>
 							<View style={styles.profileText}>
 								<Text style={styles.name}>Jean Magno</Text>

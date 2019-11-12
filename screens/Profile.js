@@ -7,17 +7,17 @@ class Profile extends Component {
     render(){
         return(
             <View style={{height: 1000, backgroundColor:"#461C5D"}}>
-                <View style={{marginTop:50, marginLeft:24, marginRight:24, marginBottom:70}}>
-                    <Image style={{marginLeft:150, marginTop:50, height:120, width:120, borderRadius: 50}} source={require("../assets/MUVLUV-Icon.png")}/>
-                    <Text style={{fontSize:22, marginLeft:150, marginTop:12, color:"white"}}>
+                <View style={{marginTop:50, marginLeft:24, marginRight:24, marginBottom:70, borderRadius:15, shadowOffset:{width:0, height:2}, shadowOpacity:0.1, shadowRadius:13, shadowColor:"#2F2F2F", padding: 20, backgroundColor:'white', margin:20, paddingBottom:40}}>
+                    <Image style={{marginLeft:120, marginTop:50, height:120, width:120, borderRadius: 50}} source={require("../assets/Profile.png")}/>
+                    <Text style={{fontSize:22, marginLeft:120, marginTop:12, color:"black"}}>
                         Jean Magno
                     </Text>
-                    <Text style={{fontSize:16, marginLeft:198, marginTop:4, marginBottom:30, color:"white"}}>
+                    <Text style={{fontSize:16, marginLeft:168, marginTop:4, marginBottom:30, color:"black"}}>
                         4.5
                     </Text>
                     <View style={{marginTop:60, paddingBottom:30, flex:2, flexDirection:'row', alignItems:'center'}}>
                         <Image style={{height:60, width: 60}} source={require("../assets/Awards.png")}/>
-                        <Text style={{marginTop:-20, marginLeft:20, fontSize:18, color:"white"}}>
+                        <Text style={{marginTop:-20, marginLeft:20, fontSize:18, color:"black"}}>
                             Awards
                         </Text>
                         <Text style={{marginTop:25, marginLeft:-61, fontSize:16, color:"#50D9EA"}}>
@@ -26,7 +26,7 @@ class Profile extends Component {
                     </View>
                     <View style={{marginTop:60, paddingBottom:30, flex:2, flexDirection:'row', alignItems:'center'}}>
                         <Image style={{height:60, width: 60}} source={require("../assets/Avatar.jpg")}/>
-                        <Text style={{marginTop:-20, marginLeft:20, fontSize:18, color:"white"}}>
+                        <Text style={{marginTop:-20, marginLeft:20, fontSize:18, color:"black"}}>
                             Edit Profile
                         </Text>
                         <Text style={{marginTop:25, marginLeft:-87, fontSize:16, color:"#50D9EA"}}>
@@ -35,7 +35,7 @@ class Profile extends Component {
                     </View>
                     <View style={{marginTop:60, paddingBottom:30, flex:2, flexDirection:'row', alignItems:'center'}}>
                         <Image style={{height:60, width: 60}} source={require("../assets/Score.png")}/>
-                        <Text style={{marginTop:-20, marginLeft:20, fontSize:18, color:"white"}}>
+                        <Text style={{marginTop:-20, marginLeft:20, fontSize:18, color:"black"}}>
                             Rating
                         </Text>
                         <Text style={{marginTop:25, marginLeft:-52, fontSize:16, color:"#50D9EA"}}>

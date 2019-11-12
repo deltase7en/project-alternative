@@ -1,6 +1,6 @@
 import MapView, { Marker, PROVIDER_GOOGLE, AnimatedRegion } from 'react-native-maps'
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import MenuButton from '../components/MenuButton'
 
 const LATITUDE_DELTA = 0.009;
@@ -23,14 +23,13 @@ class MapLocation extends Component{
             })
         };
     }
-    async componentDidMount() {
+    componentDidMount() {
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 console.log(position);
                 this.setState({
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude,
-
                     error:null
                 })
             },
@@ -61,7 +60,6 @@ class MapLocation extends Component{
             <View style={styles.container}>
                 <MenuButton navigation={this.props.navigation}/>
                     <MapView style={styles.map}
-                        provider={PROVIDER_GOOGLE}
                         showUserLocation={true}
                         followUserLocation={true}
                         initialRegion={this.getMapRegion()}
@@ -69,6 +67,8 @@ class MapLocation extends Component{
                     >
                     <Marker coordinate={this.getMapRegion()}/>
                     </MapView>
+                    <View style={{borderRadius:15, shadowOffset:{width:0, height:2}, shadowOpacity:0.1, shadowRadius:13, shadowColor:"#2F2F2F", padding: 20, marginBottom:16, backgroundColor:'white', margin:20}}>
+                    </View>
                 </View>
         )
     }
@@ -80,16 +80,13 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         right: 0,
-        bottom: 0,
-        justifyContent: 'flex-end',
-        alignItems: 'center',
     },
     map: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
+        
+        flex:1,
+        height:500, 
+        width:500,
+        alignItems:'center'
     }
 })
 
