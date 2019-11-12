@@ -5,6 +5,7 @@ import { createDrawerNavigator } from 'react-navigation-drawer'
 import HomeScreen from '../screens/HomeScreen'
 import MenuDrawer from '../components/MenuDrawer'
 import MapLocation from '../screens/Map'
+import Profile from '../screens/ProfileScreen'
 
 const WIDTH = Dimensions.get('window').width;
 
@@ -22,7 +23,10 @@ const DrawerNavigator = createDrawerNavigator(
         },
         Map: {
             screen: MapLocation
-        },
+		},
+		Profile: {
+			screen: Profile
+		}
 	},
 	DrawerConfig
 );

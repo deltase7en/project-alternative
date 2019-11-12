@@ -23,7 +23,7 @@ class MapLocation extends Component{
             })
         };
     }
-    componentDidMount() {
+    async componentDidMount() {
         navigator.geolocation.getCurrentPosition(
             (position) => {
                 console.log(position);

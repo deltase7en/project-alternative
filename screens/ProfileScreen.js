@@ -2,14 +2,14 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import MenuButton from '../components/MenuButton'
-import Explore from './Explore'
+import Profile from './Profile'
 export default class HomeScreen extends React.Component {
   render()
   {
     return (
-      <View style={styles.container}>
+      <View>
         <MenuButton navigation={this.props.navigation}/>
-        <Explore/>
+        <Profile/>
       </View>
     );
   }
