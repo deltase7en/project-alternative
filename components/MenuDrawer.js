@@ -41,7 +41,7 @@ export default class MenuDrawer extends React.Component {
                         {this.navLink('Home', 'Home')}
 						{this.navLink('Profile', 'Profile')}
                         {this.navLink('Map', 'Map')}
-						{this.navLink('Awards', 'Awards')}
+						
 					</View>
 				</ScrollView>
 				<View style={styles.footer}>

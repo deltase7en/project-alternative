@@ -5,8 +5,8 @@ import MenuButton from '../components/MenuButton'
 
 const LATITUDE_DELTA = 0.009;
 const LONGITUDE_DELTA = 0.009;
-const LATITUDE = -22.9355145;
-const LONGITUDE = -43.184392599999995;
+const LATITUDE = -22.935415;
+const LONGITUDE = -43.176878;
 class MapLocation extends Component{
     constructor(props){
         super(props)
@@ -67,7 +67,8 @@ class MapLocation extends Component{
                     >
                     <Marker coordinate={this.getMapRegion()}/>
                     </MapView>
-                    <View style={{borderRadius:15, shadowOffset:{width:0, height:2}, shadowOpacity:0.1, shadowRadius:13, shadowColor:"#2F2F2F", padding: 20, marginBottom:16, backgroundColor:'white', margin:20}}>
+                    <View style={{borderRadius:15, shadowOffset:{width:0, height:2}, shadowOpacity:0.1, shadowRadius:13, shadowColor:"#2F2F2F", padding: 20, marginBottom:16, backgroundColor:'white', margin:20, height:250}}>
+                        <Button title="Search" color="#f194ff" />
                     </View>
                 </View>
         )
@@ -80,6 +81,8 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         right: 0,
+        bottom: 0,
+        backgroundColor:"#461C5D"
     },
     map: {
         

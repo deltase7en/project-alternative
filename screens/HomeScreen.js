@@ -8,6 +8,7 @@ export default class HomeScreen extends React.Component {
   {
     return (
       <View style={styles.container}>
+        <MenuButton navigation={this.props.navigation}/>
         <Explore/>
       </View>
     );

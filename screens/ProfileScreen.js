@@ -7,7 +7,7 @@ export default class HomeScreen extends React.Component {
   render()
   {
     return (
-      <View>
+      <View style={styles.container}>
         <MenuButton navigation={this.props.navigation}/>
         <Profile/>
       </View>
@@ -16,13 +16,11 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#f5f5f5',
-        alignItems: 'center',
-        justifyContent: 'center',
-  },
-    text: {
-        fontSize: 30,
-  }
+  container: {
+      flex: 1,
+      backgroundColor: '#461C5D',
+},
+  text: {
+      fontSize: 30,
+}
 });
